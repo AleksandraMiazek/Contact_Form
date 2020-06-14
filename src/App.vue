@@ -2,7 +2,7 @@
 <div>
   <h1>hello vue</h1>
 
-  <FormValidation/>
+  <FormValidation/> <!--  @add="add2" -->
 </div>
 </template>
 
@@ -12,8 +12,9 @@ export default {
   name: 'App',
  components: {
    FormValidation
+ },
+ 
  }
-}
 </script>
 
 <style>

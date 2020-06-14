@@ -8,7 +8,7 @@
                     <h6>Please fill in all form elements</h6>
 				</div>
 				<div class="panel-body">
-					<form @submit.prevent='submit'>
+					<form @submit.prevent=''>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Name</label>
 							<input type="text" placeholder="Enter your name" name="name" class="form-control" 
@@ -32,7 +32,8 @@
                             <span v-if='msg.message'> {{msg.message}} </span>
 						</div>
 						<input type="submit" value="Send" :disabled='disableSubmitButton' class="btn btn-warning" @click="add">
-					</form>
+                       <!-- <button variant="primary" :disabled='disableSubmitButton' @click="add" >Send</button>-->
+                    </form>
 				</div>
 			</div>
 		</div>
@@ -42,6 +43,7 @@
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from 'axios';
 export default {
   name: 'FormValidation',
     data() {
@@ -132,7 +134,25 @@ export default {
 
         submit() {
             alert('Great! You have completed contact form correctly');
-        }
+        },
+
+       
+    async add(){
+      try {
+       let response = await axios.post('https://5d9f7fe94d823c0014dd323d.mockapi.io/api/message', {
+           name: this.name,
+            email:  this.email,
+            subject: this.subject,
+            message: this.message
+       });
+       console.log('Sukces', response);
+       alert ('You have completed contact form correctly. Upload successful');
+      } catch (e) {
+        alert('Upload failed, try again later! ');
+        console.log('Error', e);
+      }
+    }
+
     }
 }
 </script>
