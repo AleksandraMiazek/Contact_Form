@@ -1,32 +1,32 @@
 <template>
 <div>
-  <h1>Form validation</h1>
-<div class="col-lg-offset-4 col-lg-4">
+
+<div class="col-lg-offset-4 col-md-6 col-lg-5 container">
 			<div class="panel panel-primary" id="formdiv">
 				<div class="panel-heading">
-					<h3 class="panel-title">Contact Form</h3>
+					<h1 class="panel-title">Contact Form</h1>
                     <h6>Please fill in all form elements</h6>
 				</div>
 				<div class="panel-body">
 					<form @submit.prevent=''>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Name</label>
+							<label for="exampleInputEmail1"><b>Name</b></label>
 							<input type="text" placeholder="Enter your name" name="name" class="form-control" 
                                     minlength="5" maxlength="50" required v-model='name'>
-                            <span v-if='msg.name'> {{msg.name}} </span>
+                            <span class="alert" v-if='msg.name'> {{msg.name}} </span>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Email</label>
+							<label for="exampleInputEmail1"><b>Email</b></label>
 							<input type="text" placeholder="Enter your email adress" name="email" class="form-control" required v-model='email'>
-                            <span v-if='msg.email'> {{msg.email}} </span>
+                            <span v-if='msg.email' class="alert"> {{msg.email}} </span>
 						</div>			
 						<div class="form-group">
-							<label for="exampleInputEmail1">Subject</label>
+							<label for="exampleInputEmail1"><b>Subject</b></label>
 							<input type="text" placeholder="Subject" name="subject" class="form-control" maxlength="101" optional v-model='subject'>
-                            <span v-if='msg.subject'> {{msg.subject}} </span>
+                            <span class="alert" v-if='msg.subject'> {{msg.subject}} </span>
                         </div>
                         <div class="form-group">
-							<label for="exampleInputEmail1">Message</label>
+							<label for="exampleInputEmail1"><b>Message</b></label>
 							<textarea rows="4" placeholder="Write your message..." name="message" class="form-control" maxlength="500" required
                             v-model='message'></textarea>
                             <span v-if='msg.message'> {{msg.message}} </span>
@@ -158,5 +158,60 @@ export default {
 </script>
 
 <style scoped>
+
+.container {
+    background-color: #ffffff;
+	padding: 35px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+}
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 46px;
+}
+h6 {
+    color: rgb(124, 124, 124);
+
+}
+.alert {
+    color: rgb(201, 24, 24);
+    padding: 0;
+}
+input[type=text],
+textarea
+{
+	background-color: #f8f7f7;
+	color: #666;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+input[type=text]:focus,
+textarea:focus
+{
+	-webkit-box-shadow: 0px 0px 5px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 5px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 5px 2px rgba(204,204,204,0.9);
+    border: 2px solid #8daaca;
+    background-color: rgb(241, 247, 255);
+}
+
+input[type=submit]
+{
+	background-color: #3683b0;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 1px;
+}
+
 
 </style>

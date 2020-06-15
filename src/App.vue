@@ -1,7 +1,5 @@
 <template>
 <div>
-  <h1>hello vue</h1>
-
   <FormValidation/> <!--  @add="add2" -->
 </div>
 </template>
@@ -18,5 +16,9 @@ export default {
 </script>
 
 <style>
-
+body
+{
+	/* Background pattern from subtlepatterns.com */
+  background-image: url("../public/hexellence.png");
+}
 </style>
