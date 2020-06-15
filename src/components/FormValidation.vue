@@ -22,7 +22,7 @@
 						</div>			
 						<div class="form-group">
 							<label for="exampleInputEmail1"><b>Subject</b></label>
-							<input type="text" placeholder="Subject" name="subject" class="form-control" maxlength="101" optional v-model='subject'>
+							<input type="text" placeholder="Subject" name="subject" class="form-control" maxlength="100" optional v-model='subject'>
                             <span class="alert" v-if='msg.subject'> {{msg.subject}} </span>
                         </div>
                         <div class="form-group">
@@ -126,7 +126,7 @@ export default {
             if(
                 this.validationStatus['name'] === true &&
                 this.validationStatus['email'] == true &&
-                this.validationStatus['message'] == true
+                this.validationStatus['message'] == true 
             ) {
             this.disableSubmitButton= false;
             }
@@ -138,18 +138,25 @@ export default {
 
        
     async add(){
-      try {
-       let response = await axios.post('https://5d9f7fe94d823c0014dd323d.mockapi.io/api/message', {
-           name: this.name,
-            email:  this.email,
-            subject: this.subject,
-            message: this.message
-       });
-       console.log('Sukces', response);
-       alert ('You have completed contact form correctly. Upload successful');
-      } catch (e) {
-        alert('Upload failed, try again later! ');
-        console.log('Error', e);
+      if(
+          this.msg['name'] =='' &&
+          this.msg['email'] == ''
+          ) {
+        try {
+        let response = await axios.post('https://5d9f7fe94d823c0014dd323d.mockapi.io/api/message', {
+            name: this.name,
+                email:  this.email,
+                subject: this.subject,
+                message: this.message
+        });
+        console.log('Sukces', response);
+        alert ('You have completed contact form correctly. Upload successful');
+        } catch (e) {
+            alert('Upload failed, try again later! ');
+            console.log('Error', e);
+        }
+      } else {
+          alert('Please enter the correct details');
       }
     }
 
